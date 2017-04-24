@@ -26,10 +26,7 @@ SABnzbd makes Usenet as simple and streamlined as possible by automating everyth
 $ mkdir containers && cd containers
 $ git clone git@github.com:arib/docker-sabnzbd.git
 $ cd docker-sabnzbd
-$ mkdir config \
-	downloads \
-	incomplete-downloads \
-	watch
+$ mkdir config
 $ id docker
 # insert user and group id into create command below
 ```
@@ -39,9 +36,13 @@ $ id docker
 # Note that the external ports are 8880 and 9990
 docker create --name=sabnzbd \
 -v /home/docker/containers/docker-sabnzbd/config:/config \
--v /home/docker/containers/docker-sabnzbd/downloads:/downloads \
--v /home/docker/containers/docker-sabnzbd/incomplete-downloads:/incomplete-downloads \
--v /home/docker/containers/docker-sabnzbd/watch:/watch
+-v /media/synology-kayla/downloads:/downloads \
+-v /media/synology-kayla/downloads/incomplete:/incomplete-downloads \
+-v /media/synology-kayla/watch-nzb:/watch
+-v /media/synology-kayla/tvshows:/tv
+-v /media/synology-kayla/movies/foreign_movies:/movies
+-v /media/synology-kayla/audio:/audio
+-v /media/synology-kayla/software:/software
 -e PGID=<gid> -e PUID=<uid> \
 -e TZ=Atlantic/Reykjavik \
 -p 8880:8080 -p 9990:9090 \
