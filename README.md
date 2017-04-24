@@ -21,15 +21,45 @@ SABnzbd makes Usenet as simple and streamlined as possible by automating everyth
 
 ## Usage
 
+```sh
+# As user docker do
+$ mkdir containers && cd containers
+$ git clone git@github.com:arib/docker-sabnzbd.git
+$ cd docker-sabnzbd
+$ mkdir config \
+	downloads \
+	incomplete-downloads
+$ id docker
+# insert user and group id into create command below
 ```
+
+
+```
+# Note that the external ports are 8880 and 9990
 docker create --name=sabnzbd \
--v <path to data>:/config \
--v <path to downloads>:/downloads \
--v <path to incomplete downloads>:/incomplete-downloads \
+-v /home/docker/containers/docker-sabnzbd/config:/config \
+-v /home/docker/containers/docker-sabnzbd/downloads:/downloads \
+-v /home/docker/containers/docker-sabnzbd/incomplete-downloads:/incomplete-downloads \
 -e PGID=<gid> -e PUID=<uid> \
--e TZ=<timezone> \
--p 8080:8080 -p 9090:9090 \
+-e TZ=Atlantic/Reykjavik \
+-p 8880:8080 -p 9990:9090 \
+--restart=always \
 linuxserver/sabnzbd
+```
+
+```sh
+# To start the container:
+$ docker start sabnzbd
+
+# To stop the container
+$ docker stop sabnzbd
+
+# To stop and remove the container
+$ docker stop sabnzbd && docker rm sabnzbd
+
+# To tail the logs
+$ docker logs -f sabnzbd
+
 ```
 
 ## Tags
