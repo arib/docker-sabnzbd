@@ -38,11 +38,11 @@ docker create --name=sabnzbd \
 -v /home/docker/containers/docker-sabnzbd/config:/config \
 -v /media/synology-kayla/downloads:/downloads \
 -v /media/synology-kayla/downloads/incomplete:/incomplete-downloads \
--v /media/synology-kayla/watch-nzb:/watch
--v /media/synology-kayla/tvshows:/tv
--v /media/synology-kayla/movies/foreign_movies:/movies
--v /media/synology-kayla/audio:/audio
--v /media/synology-kayla/software:/software
+-v /media/synology-kayla/watch-nzb:/watch \
+-v /media/synology-kayla/tvshows:/tv \
+-v /media/synology-kayla/movies/foreign_movies:/movies \
+-v /media/synology-kayla/audio:/audio \
+-v /media/synology-kayla/software:/software \
 -e PGID=<gid> -e PUID=<uid> \
 -e TZ=Atlantic/Reykjavik \
 -p 8880:8080 -p 9990:9090 \
