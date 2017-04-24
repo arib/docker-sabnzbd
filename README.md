@@ -28,7 +28,8 @@ $ git clone git@github.com:arib/docker-sabnzbd.git
 $ cd docker-sabnzbd
 $ mkdir config \
 	downloads \
-	incomplete-downloads
+	incomplete-downloads \
+	watch
 $ id docker
 # insert user and group id into create command below
 ```
@@ -40,6 +41,7 @@ docker create --name=sabnzbd \
 -v /home/docker/containers/docker-sabnzbd/config:/config \
 -v /home/docker/containers/docker-sabnzbd/downloads:/downloads \
 -v /home/docker/containers/docker-sabnzbd/incomplete-downloads:/incomplete-downloads \
+-v /home/docker/containers/docker-sabnzbd/watch:/watch
 -e PGID=<gid> -e PUID=<uid> \
 -e TZ=Atlantic/Reykjavik \
 -p 8880:8080 -p 9990:9090 \
